@@ -3,7 +3,7 @@
 **Computer Engineering Student @ HKUST**  
 Extended Major in Artificial Intelligence  
 📧 mancykomansze@gmail.com 
-🔗 Portfolio: https://mancykomansze.github.io/portfolio/
+🔗 Portfolio: https://mancykokms.github.io/
 
 
 ---
