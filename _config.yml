@@ -1,0 +1,16 @@
+title: "mancykokms"
+description: "Personal site / blog"
+url: "https://mancykokms.github.io"
+baseurl: ""
+theme: minima
+markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+plugins:
+  - jekyll-feed        # supported by GitHub Pages
+  - jekyll-seo-tag     # supported by GitHub Pages
+exclude:
+  - Gemfile
+  - node_modules
+  - vendor
+  - README.md
