@@ -10,9 +10,7 @@ Extended Major in Artificial Intelligence
 
 ## 🚀 About Me
 
-I’m a self-motivated computer engineering student with a strong interest in **AI, large language models, and real-world product development**. I enjoy refining messy systems, improving usability, and turning “almost works” into “actually works.”
-
-I believe learning should be practical, precise, and user-centered — especially when technology meets education.
+I’m a self-motivated computer engineering student with a strong interest in **AI, large language models, and real-world product development**. 
 
 ---
 
