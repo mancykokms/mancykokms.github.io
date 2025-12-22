@@ -13,7 +13,7 @@ init(autoreset=True)
 class CLIAssistant:
     def __init__(self):
         # Get API key from environment variable
-        api_key = "sk-459e319768154a98b65306dad2052efc"
+        api_key = "your_deepseek_api_key"
         if not api_key:
             raise ValueError("DEEPSEEK_API_KEY environment variable not set!")
         
@@ -225,4 +225,5 @@ def main():
         print(f"{Fore.YELLOW}Windows: set DEEPSEEK_API_KEY=your-api-key")
 
 if __name__ == "__main__":
+
     main()
