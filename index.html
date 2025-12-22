@@ -1,29 +1,175 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>mancykokms</title>
-  <meta name="description" content="Personal site" />
+  <meta charset="UTF-8" />
+  <title>Mancy Ko | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; max-width: 48rem; margin: 6vh auto; padding: 1rem; line-height: 1.5; color:#111; }
-    header { margin-bottom: 1.5rem; }
-    a { color: #0366d6; text-decoration: none; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+      color: #222;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.2em;
+    }
+
+    h2 {
+      margin-top: 3rem;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 0.3em;
+    }
+
+    .project {
+      margin: 2rem 0;
+    }
+
+    .project h3 {
+      margin-bottom: 0.2em;
+    }
+
+    .tech {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>mancykokms</h1>
-    <p>Welcome — this is a placeholder index page while GitHub Pages is being fixed.</p>
-  </header>
 
-  <main>
-    <p>Your GitHub Pages site is being served from the <strong>main</strong> branch root. Add your site files (HTML, or Jekyll source) to this repository to replace this page.</p>
-    <p><a href="https://github.com/mancykokms/mancykokms.github.io">View repository on GitHub</a></p>
-  </main>
+  <h1>Ko Man Sze (Mancy)</h1>
+  <p>
+    Computer Engineering Student @ HKUST <br />
+    AI-leaning • Python • Systems • Algorithms
+  </p>
 
-  <footer style="margin-top:2rem; font-size:0.9rem; color:#666;">
-    <p>Built with GitHub Pages · <time datetime="2025-12-22">2025-12-22</time></p>
+  <p>
+    <a href="https://github.com/mancykokms">GitHub</a> |
+    <a href="mailto:mancykomansze@email.com">Email</a>
+  </p>
+
+  <h2>Projects</h2>
+
+  <div class="project">
+    <h3>AI WordTrim</h3>
+    <p>
+      An AI-powered tool that converts long Chinese definitions into short,
+      keyword-style explanations for fast learning.
+    </p>
+    <p class="tech">
+      Tech: Python, JSON, LLM API
+    </p>
+    <p>
+      <a href="https://github.com/mancykokms/mancykokms.github.io/tree/main/word_trim">
+        View on GitHub →
+      </a>
+    </p>
+  </div>
+
+  <div class="project">
+    <h3>CLI Assistant</h3>
+    <p>
+      A command-line AI assistant that answers queries, summarizes text,
+      and integrates with LLM APIs.
+    </p>
+    <p class="tech">
+      Tech: Python, OpenAI / DeepSeek API
+    </p>
+    <p>
+      <a href="https://github.com/mancykokms/mancykokms.github.io/blob/main/CLI_Assistant.py">
+        View on GitHub →
+      </a>
+      <br>
+      <a href="https://mancykokms.github.io/CLI_Assistant.py">
+        Download →
+      </a>
+    </p>
+  </div>
+
+  <div class="project">
+    <h3>ChordSnap Quiz</h3>
+    <p>
+      A browser-based, timed quiz that tests guitar chord recognition using
+      standard fretboard notation, with instant feedback and score tracking.
+    </p>
+    <p class="tech">
+      Tech: HTML5, CSS3, Vanilla JavaScript
+    </p>
+    <p>
+      <a href="https://mancykokms.github.io/animated_quiz.%28chords%29.html">
+        View on GitHub →
+      </a>
+    </p>
+</div>
+
+<div class="project">
+  <h3>SongFinder</h3>
+  <p>
+    A web app to search, filter, and manage a curated list of songs by title, artist, style, or difficulty.
+    Features include real-time search, save/delete options, and responsive table display using Bootstrap.
+  </p>
+  <p class="tech">
+    Tech: HTML5, CSS3, JavaScript, Bootstrap 5
+  </p>
+  <p>
+    <a href="https://mancykokms.github.io/sort_and_filter_searchbar.html">
+      View on GitHub →
+    </a>
+  </p>
+</div>
+
+<div class="project">
+  <h3>Sortable Songs Table</h3>
+  <p>
+    An interactive web app displaying a list of songs with artist, style, and difficulty.
+    Users can sort any column in ascending or descending order using clicks or keyboard navigation.
+    Built for accessibility and responsive display using Bootstrap and jQuery.
+  </p>
+  <p class="tech">
+    Tech: HTML5, CSS3, JavaScript, jQuery, Bootstrap 5
+  </p>
+  <p>
+    <a href="hhttps://mancykokms.github.io/sort_table.html">
+      View on GitHub →
+    </a>
+  </p>
+</div>
+
+
+
+
+  <h2>About</h2>
+  <p>
+    I’m a computer engineering student focused on building practical AI tools
+    and understanding systems from the ground up. I care about clean code,
+    real-world usefulness, and learning things properly.
+  </p>
+
+  <footer>
+    © 2025 Mancy • Built with plain HTML & CSS
   </footer>
+
 </body>
 </html>
