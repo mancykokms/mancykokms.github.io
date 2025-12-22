@@ -4,7 +4,7 @@ import time
 import os
 import sys
 
-API_KEY = "sk-459e319768154a98b65306dad2052efc"
+API_KEY = "your_deepseek_api_key"
 
 API_URL = "https://api.deepseek.com/chat/completions"  # 请替换为正确 endpoint
 MODEL_NAME = "deepseek-chat"  # 也可能是 deepseek-chat-v2 等
@@ -75,4 +75,5 @@ if __name__ == "__main__":
     process_vocab_file(input_path, output_path)
 
     print(f"{tick} 完成！简化词汇已保存到 {output_path}")
+
     
