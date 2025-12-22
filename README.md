@@ -2,7 +2,7 @@
 
 **Computer Engineering Student @ HKUST**  
 Extended Major in Artificial Intelligence  
-📧 mancykomansze@gmail.com | 📞 +852 5967 9722  
+📧 mancykomansze@gmail.com 
 
 ---
 
