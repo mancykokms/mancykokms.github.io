@@ -47,12 +47,12 @@ Secondary School Diploma
 #### 🏆 Achievements
 - Improved **readability and comprehension** of Chinese vocabulary definitions.
 - Recommended incorporating **full International Phonetic Alphabet (IPA) coverage** to improve pronunciation accuracy.
-- Helped streamline repetitive workflows by **fine-tuning and applying LLM APIs** for definition summarization and vocabulary validation.
+- Helped streamline repetitive workflows by **fine-tuning and applying Large Language Model Application Programming Interface (LLM APIs)** for definition summarization and vocabulary validation.
 
 #### 📚 What I Learned
 - Practical **LLM API fine-tuning**
-- Automating content review pipelines
-- Bridging AI output with real educational needs (a lot harder than it sounds)
+- Automated content review pipelines
+- Bridged AI output with real educational needs (a lot harder than it sounds)
 
 ---
 
