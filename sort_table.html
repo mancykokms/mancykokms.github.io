@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sortable Songs Table</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style>
+    th{ 
+        cursor: pointer;
+        color:#fff;
+    }
+    .table {
+      border: 1px solid #0d6efd;
+    }
+    .bg-primary {
+      background-color: #0d6efd;
+      color: #fff;
+    }
+    .table td,
+    .table th {
+      border: 1px solid #0d6efd;
+      padding: 8px;
+    }
+    .table th {
+      font-weight: bold;
+      text-align: left;
+    }
+    body {
+      background-color: #b9b4ab;
+    }
+    .sort-indicator { margin-left: .4rem; font-size: .9rem; display:inline-flex; gap: .15rem; align-items:center; }
+    .sort-indicator .arrow-up,
+    .sort-indicator .arrow-down {
+      display:inline-block;
+      line-height:1;
+      opacity: .35; /* muted when inactive */
+      color: rgba(255,255,255,0.9);
+    }
+    th.sorted-asc .arrow-up,
+    th.sorted-desc .arrow-down {
+      opacity: 1; /* show the active arrow */
+    }
+  </style>
+</head>
+<body>
+  <div class="container my-4">
+    <h1 class="h4 mb-3">Songs</h1>
+    <div class="table-responsive">
+      <table class="table" aria-describedby="table-desc">
+        <caption id="table-desc">A sortable list of songs with artist, style, and difficulty.</caption>
+        <thead>
+          <tr class="bg-primary">
+            <th scope="col" data-colname="title" data-order="desc" tabindex="0" aria-sort="none">Title <span class="sort-indicator"><span class="arrow-up">▲</span><span class="arrow-down">▼</span></span></th>
+            <th scope="col" data-colname="artist" data-order="desc" tabindex="0" aria-sort="none">Artist <span class="sort-indicator"><span class="arrow-up">▲</span><span class="arrow-down">▼</span></span></th>
+            <th scope="col" data-colname="style" data-order="desc" tabindex="0" aria-sort="none">Style <span class="sort-indicator"><span class="arrow-up">▲</span><span class="arrow-down">▼</span></span></th>
+            <th scope="col" data-colname="difficulty" data-order="desc" tabindex="0" aria-sort="none">Difficulty <span class="sort-indicator"><span class="arrow-up">▲</span><span class="arrow-down">▼</span></span></th>
+          </tr>
+        </thead>
+        <tbody id="myTable">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+  var myArray = [
+    { title: 'Blackbird', artist: 'The Beatles', style: 'Folk Rock', difficulty: 'Beginners' },
+    { title: 'Free Fallin', artist: 'Tom Petty', style: 'Folk Rock', difficulty: 'Intermediate' },
+    { title: 'Bad Moon Rising', artist: 'Creedence Clearwater Revival', style: 'Folk, Psychedelic Rock', difficulty: 'Beginners' },
+    { title: 'Stand by Me', artist: 'Ben E. King', style: 'Soul, R&B', difficulty: 'Beginners' },
+    { title: 'Take Me Home Country Roads', artist: 'John Denver', style: 'Country Folk', difficulty: 'Beginners' },
+    { title: 'Brown Eyed Girl', artist: 'Van Morrison', style: 'Acoustic Rock', difficulty: 'Beginners' },
+    { title: 'Im Yours', artist: 'Jason Mraz', style: 'Pop', difficulty: 'Beginners' },
+    { title: 'Hotel California', artist: 'Eagles', style: 'Rock', difficulty: 'Intermediate' },
+    { title: 'Dust in the Wind', artist: 'Kansas', style: 'Acoustic Rock, Ballad', difficulty: 'Intermediate' },
+    { title: 'The Joker', artist: 'Steve Miller Band', style: 'Rock', difficulty: 'Intermediate' },
+    { title: 'A Horse With No Name', artist: 'America', style: 'Soft Rock', difficulty: 'Beginners' }
+  ];
+
+  // Build table rows
+  function buildTable(data){
+    var table = document.getElementById('myTable');
+    table.innerHTML = '';
+    for (var i = 0; i < data.length; i++){
+      var row = '<tr>' +
+                '<td>' + (data[i].title || '') + '</td>' +
+                '<td>' + (data[i].artist || '') + '</td>' +
+                '<td>' + (data[i].style || '') + '</td>' +
+                '<td>' + (data[i].difficulty || '') + '</td>' +
+                '</tr>';
+      table.innerHTML += row;
+    }
+  }
+
+  // Sort handler using localeCompare for robust sorting
+  function sortByColumn(column, order){
+    myArray.sort(function(a, b){
+      var va = (a[column] || '').toString();
+      var vb = (b[column] || '').toString();
+      return va.localeCompare(vb, undefined, {sensitivity: 'base'});
+    });
+    if (order === 'desc') myArray.reverse();
+  }
+
+  // Update header indicators and aria-sort
+  function updateHeaderIndicators($activeTh, order){
+    $('th[scope="col"]').each(function(){
+      var $t = $(this);
+      // clear previous sorted classes
+      $t.removeClass('sorted-asc sorted-desc');
+      if ($t.is($activeTh)){
+        var cls = order === 'asc' ? 'sorted-asc' : 'sorted-desc';
+        $t.addClass(cls);
+        $t.attr('aria-sort', order === 'asc' ? 'ascending' : 'descending');
+      } else {
+        $t.attr('aria-sort', 'none');
+        $t.data('order','desc');
+      }
+    });
+  }
+
+  // Wire up click + keyboard (Enter/Space) handlers
+  $(function(){
+    buildTable(myArray);
+
+    $('th[scope="col"]').on('click', function(){
+      var $th = $(this);
+      var column = $th.data('colname');
+      var order = $th.data('order'); // 'desc' or 'asc'
+
+      // toggle order
+      var nextOrder = (order === 'desc') ? 'asc' : 'desc';
+
+      // perform sort
+      sortByColumn(column, nextOrder === 'asc' ? 'asc' : 'desc');
+
+      // set the data-order for the clicked header
+      $th.data('order', nextOrder);
+
+      // update indicators
+      updateHeaderIndicators($th, nextOrder);
+
+      // rebuild table
+      buildTable(myArray);
+    }).on('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ' || e.keyCode === 13 || e.keyCode === 32){
+        e.preventDefault();
+        $(this).trigger('click');
+      }
+    });
+  });
+  </script>
+</body>
+</html>

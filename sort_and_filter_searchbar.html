@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<body>
+
+    <div class="container mt-5 pb-5 pt-5 " style="background-color: rgb(185, 180, 171);border-radius: 20px;">
+
+        <div class="row ">
+            <div class="offset-md-3 col-md-6  ">
+                <input type="search" class="form-control" id="search" placeholder="Search by title or artist">
+            </div>
+        </div>
+
+        <h3 id="error" class="text-center mt-3"></h3>
+
+        <div class="row ">
+            <div class="offset-md-1 col-md-10 ">
+
+                <table class="table table-bordered border-primary table-hover mt-5 text-capitalize" id="mytable">
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var array = [
+  { title: 'Blackbird', 
+   artist: 'The Beatles', 
+   style: 'Folk Rock', 
+   difficulty: 'Beginners' },
+          
+  { title: 'Free Fallin', 
+   artist: 'Tom Petty', 
+   style: 'Folk Rock', 
+   difficulty: 'Intermediate' },
+          
+  { title: 'Bad Moon Rising', 
+   artist: 'Credence Clearwater Revival', 
+   style: 'Folk, Psychedelic Rock', 
+   difficulty: 'Beginners' },
+          
+  { title: 'Stand by Me', 
+   artist: 'Ben E. King', 
+   style: 'Soul, R&B', 
+   difficulty: 'Beginners' },
+  
+  { title: 'Take Me Home Country Roads', 
+   artist: 'John Denver', 
+   style: 'Country Folk', 
+   difficulty: 'Beginners' },
+          
+  { title: 'Brown Eyed Girl', 
+   artist: 'Van Morrison', 
+   style: 'Acoustic Rock', 
+   difficulty: 'Beginners' },
+          
+  { title: 'Im Yours', 
+   artist: 'Jason Mraz', 
+   style: 'Pop', 
+   difficulty: 'Beginners' },
+          
+  { title: 'Hotel California', 
+   artist: 'Eagles', 
+   style: 'Rock', 
+   difficulty: 'Intermediate' },
+          
+  { title: 'Dust in the Wind', 
+   artist: 'Kansas', 
+   style: 'Acoustic Rock, Ballad', 
+   difficulty: 'Intermediate' },
+          
+  { title: 'The Joker', 
+   artist: 'Steve Miller Band', 
+   style: 'Rock', 
+   difficulty: 'Intermediate' },
+          
+  { title: 'A Horse With No Name', 
+   artist: 'America', 
+   style: 'Soft Rock', 
+   difficulty: 'Beginners' },
+
+  { title: 'Wonderwall', 
+   artist: 'Oasis', 
+   style: 'Acoustic Rock', 
+   difficulty: 'Beginners' },
+
+  { title: 'Knockin on Heavens Door', 
+   artist: 'Bob Dylan', 
+   style: 'Folk Rock', 
+   difficulty: 'Beginners' },
+
+  { title: 'Blowin in the Wind', 
+   artist: 'Bob Dylan', 
+   style: 'Folk', 
+   difficulty: 'Beginners' },
+
+  { title: 'House of the Rising Sun', 
+   artist: 'The Animals', 
+   style: 'Blues Rock', 
+   difficulty: 'Beginners' },
+
+  { title: 'Let it Be', 
+   artist: 'The Beatles', 
+   style: 'Pop Rock, Ballad', 
+   difficulty: 'Beginners' },
+
+  { title: 'Wild Thing', 
+   artist: 'The Troggs', 
+   style: 'Garage Rock', 
+   difficulty: 'Beginners' },
+
+  { title: 'Stairway to Heaven', 
+   artist: 'Led Zeppelin', 
+   style: 'Rock', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Tears in Heaven', 
+   artist: 'Eric Clapton', 
+   style: 'Acoustic Rock, Ballad', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Wish You Were Here', 
+   artist: 'Pink Floyd', 
+   style: 'Acoustic Rock, Ballad', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Landslide', 
+   artist: 'Fleetwood Mac', 
+   style: 'Folk Rock', 
+   difficulty: 'Intermediate' },
+
+  { title: 'The Times They Are A-Changin', 
+   artist: 'Bob Dylan', 
+   style: 'Folk', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Stairway to Heaven', 
+   artist: 'Led Zeppelin', 
+   style: 'Rock', 
+   difficulty: 'Intermediate' },
+
+  { title: 'More Than Words', 
+   artist: 'Extreme', 
+   style: 'Acoustic Rock, Ballad', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Shape of My Heart', 
+   artist: 'Sting', 
+   style: 'Pop, Jazz', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Classical Gas', 
+   artist: 'Mason Williams', 
+   style: 'Classical Guitar', 
+   difficulty: 'Master' },
+
+  { title: 'Eruption', 
+   artist: 'Van Helen', 
+   style: 'Hard Rock, Heavy Metal', 
+   difficulty: 'Master' },
+
+  { title: 'Little Wing', 
+   artist: 'Jimi Hendrix', 
+   style: 'Blues Rock', 
+   difficulty: 'Master' },
+
+  { title: 'Sultan of Swings', 
+   artist: 'Dire Straits', 
+   style: 'Rock, Blues', 
+   difficulty: 'Master' },
+
+  { title: 'Under the Bridge', 
+   artist: 'Red Hot Chili Peppers', 
+   style: 'Alternative Rock', 
+   difficulty: 'Master' },
+
+  { title: 'Crazy Train', 
+   artist: 'Ozzy Osbourne', 
+   style: 'Heavy Metal', 
+   difficulty: 'Master' },
+
+  { title: 'Sweet Child o Mine', 
+   artist: 'Guns N Roses', 
+   style: 'Hard Rock, Heavy Metal', 
+   difficulty: 'Master' },
+
+  { title: 'Black Dog', 
+   artist: 'Led Zeppelin', 
+   style: 'Rock', 
+   difficulty: 'Master' },
+
+    { title: 'Toccata and Faugue in D Minor', 
+   artist: 'Bach', 
+   style: 'Classical Music', 
+   difficulty: 'Master' },
+
+  { title: 'Sweet Home Alabama', 
+   artist: 'Lynyrd Skynyrd', 
+   style: 'Rock', 
+   difficulty: 'Beginner' },
+
+  { title: 'Technical Difficulties', 
+   artist: 'Racer X', 
+   style: 'Metal', 
+   difficulty: 'Master' },
+
+  { title: 'The Flight of the Bumblebee', 
+   artist: 'Nikolai Rimsky-Karsakov', 
+   style: 'Classical Music', 
+   difficulty: 'Master' },
+
+  { title: 'Perfect', 
+   artist: 'Ed Sheeran', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Thinking Out Loud', 
+   artist: 'Ed Sheeran', 
+   style: 'Pop', 
+   difficulty: 'Beginner/Intermediate' },
+
+  { title: 'Photograph', 
+   artist: 'Ed Sheeran', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Shape of You', 
+   artist: 'Ed Sheeran', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Castle on the Hill', 
+   artist: 'Ed Sheeran', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Love Story', 
+   artist: 'Taylor Swift', 
+   style: 'Country Pop', 
+   difficulty: 'Beginner/Intermediate' },
+
+  { title: 'Shake It Off', 
+   artist: 'Taylor Swift', 
+   style: 'Pop', 
+   difficulty: 'Beginner/Intermediate' },
+
+  { title: 'You Belong with Me', 
+   artist: 'Taylor Swift', 
+   style: 'Country Pop', 
+   difficulty: 'Beginner' },
+
+  { title: 'Blank Space', 
+   artist: 'Taylor Swift', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Wildest Dreams', 
+   artist: 'Taylor Swift', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Stiches', 
+   artist: 'Shawn Mendes', 
+   style: 'Pop', 
+   difficulty: 'Beginner/Intermediate' },
+
+  { title: 'Treat You Better', 
+   artist: 'Shawn Mendes', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' },
+
+  { title: 'In My Blood', 
+   artist: 'Shawn Mendes', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Theres Nothing Holding Me Back ', 
+   artist: 'Shawn Mendes', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' },
+
+  { title: 'If I Cant Have You', 
+   artist: 'Shawn Mendes', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' },
+
+  { title: 'What Makes You Beautiful', 
+   artist: 'One Direction', 
+   style: 'Pop', 
+   difficulty: 'Beginner' },
+
+  { title: 'Story of My Life', 
+   artist: 'One Direction', 
+   style: 'Pop', 
+   difficulty: 'Beginner/Intermediate' },
+
+  { title: 'Best Song Ever', 
+   artist: 'One Direction', 
+   style: 'Pop', 
+   difficulty: 'Beginner/Intermediate' },
+
+  { title: 'Drag Me Down', 
+   artist: 'One Direction', 
+   style: 'Pop', 
+   difficulty: 'Beginner/Intermediate' },
+
+  { title: 'Steal Me Girl', 
+   artist: 'One Direction', 
+   style: 'Pop', 
+   difficulty: 'Beginner/Intermediate' },
+
+  { title: 'Yellow', 
+   artist: 'Coldplay', 
+   style: 'Alternative/Indie', 
+   difficulty: 'Beginner/Intermediate' },
+
+  { title: 'The Scientist', 
+   artist: 'Coldplay', 
+   style: 'Alternative/Indie', 
+   difficulty: 'Beginner/Intermediate' },
+
+  { title: 'Viva la Vida', 
+   artist: 'Coldplay', 
+   style: 'Alternative/Indie', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Clocks', 
+   artist: 'Coldplay', 
+   style: 'Alternative/Indie', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Fix You', 
+   artist: 'Coldplay', 
+   style: 'Alternative/Indie', 
+   difficulty: 'Intermediate/Master' },
+
+  { title: 'Radioactive', 
+   artist: 'Imagine Dragons', 
+   style: 'Alternative Rock', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Believer', 
+   artist: 'Imagine Dragons', 
+   style: 'Alternative Rock', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Demons', 
+   artist: 'Imagine Dragons', 
+   style: 'Alternative Rock', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Its Time', 
+   artist: 'Imagine Dragons', 
+   style: 'Alternative Rock', 
+   difficulty: 'Intermediate' },   
+
+  { title: 'Thunder', 
+   artist: 'Imagine Dragons', 
+   style: 'Alternative Rock', 
+   difficulty: 'Intermediate/Master' },
+
+  { title: 'Fireflies', 
+   artist: 'Owl City', 
+   style: 'Synthpop', 
+   difficulty: 'Beginner' },
+
+  { title: 'Good Time', 
+   artist: 'Owl City', 
+   style: 'Synthpop', 
+   difficulty: 'Beginner/Intermediate' },
+
+  { title: 'Vanilla Twilight', 
+   artist: 'Owl City', 
+   style: 'Synthpop', 
+   difficulty: 'Intermediate' },
+ 
+  { title: 'When Can I See You Again?', 
+   artist: 'Owl City', 
+   style: 'Synthpop', 
+   difficulty: 'Intermediate/Master' },
+
+  { title: 'The Saltwater Room', 
+   artist: 'Owl City', 
+   style: 'Synthpop', 
+   difficulty: 'Intermediate/Master' },
+
+  { title: 'Waake Me Up', 
+   artist: 'Avicii', 
+   style: 'Electro-folk', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Levels', 
+   artist: 'Avicii', 
+   style: 'Electro-house', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Hey Brother', 
+   artist: 'Avicii', 
+   style: 'Country-dance', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Waiting for Love', 
+   artist: 'Avicii', 
+   style: 'Electro-house', 
+   difficulty: 'Intermediate/Master' },
+
+  { title: 'Withut You', 
+   artist: 'Avicii', 
+   style: 'Progressive House', 
+   difficulty: 'Master' },
+
+  { title: 'Firestone', 
+   artist: 'Kygo', 
+   style: 'Tropical House', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Stole the Show', 
+   artist: 'Kygo', 
+   style: 'Tropical House', 
+   difficulty: 'Intermediate/Master' },
+
+  { title: 'It Aint Me', 
+   artist: 'Kygo', 
+   style: 'Tropical House', 
+   difficulty: 'Intermediate/Master' },
+
+  { title: 'Higher Love', 
+   artist: 'Kygo', 
+   style: 'Tropical House', 
+   difficulty: 'Intermediate/Master' },
+
+  { title: 'Stay', 
+   artist: 'Kygo', 
+   style: 'Tropical House', 
+   difficulty: 'Intermediate/Master' },
+
+  { title: 'Sucker', 
+   artist: 'Jonas Brothers', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' },
+
+  { title: 'burnin Up', 
+   artist: 'Jonas Brothers', 
+   style: 'Pop Rock', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Lovebug', 
+   artist: 'Jonas Brothers', 
+   style: 'Pop Rock', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Year 3000', 
+   artist: 'Jonas Brothers', 
+   style: 'Pop Rock', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Cool', 
+   artist: 'Jonas Brothers', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Breakeven', 
+   artist: 'The Script', 
+   style: 'Pop Rock', 
+   difficulty: 'Intermediate' },
+
+  { title: 'The Man Who Cant Be Moved', 
+   artist: 'The Script', 
+   style: 'Pop Rock', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Hall of Fame', 
+   artist: 'The Script', 
+   style: 'Pop Rock', 
+   difficulty: 'Intermediate/Master' },
+
+  { title: 'For the First Time', 
+   artist: 'The Script', 
+   style: 'Pop Rock', 
+   difficulty: 'Intermediate' },
+
+  { title: 'Superheroes', 
+   artist: 'The Script', 
+   style: 'Pop Rock', 
+   difficulty: 'Intermediate/Master' },
+
+   { title: "Sugar, We're Goin Down", 
+   artist: 'Fall Out Boy', 
+   style: 'Pop Punk', 
+   difficulty: 'Intermediate' }, 
+
+  { title: "Dance, Dance", 
+   artist: 'Fall Out Boy', 
+   style: 'Pop Punk', 
+   difficulty: 'Intermediate' }, 
+
+  { title: "Thnks fr th Mmrs", 
+   artist: 'Fall Out Boy', 
+   style: 'Pop Punk', 
+   difficulty: 'Intermediate/Master' }, 
+
+  { title: "Centuries", 
+   artist: 'Fall Out Boy', 
+   style: 'Pop Punk', 
+   difficulty: 'Intermediate/Master' },
+
+  { title: "My Songs Know What You Did in the Dark (Light Em Up)", 
+   artist: 'Fall Out Boy', 
+   style: 'Pop Punk', 
+   difficulty: 'Intermediate/Master' }, 
+
+  { title: "Sugar, We're Goin Down", 
+   artist: 'Fall Out Boy', 
+   style: 'Pop Punk', 
+   difficulty: 'Intermediate' }, 
+
+  { title: "I Write Sins Not Trgedies", 
+   artist: 'Panic! at the Disco', 
+   style: 'Emo Pop', 
+   difficulty: 'Intermediate' }, 
+
+  { title: "Nine in the Afternoon", 
+   artist: 'Panic! at the Disco', 
+   style: 'Pop Rock', 
+   difficulty: 'Intermediate' },
+
+  { title: "Victorious", 
+   artist: 'Panic! at the Disco', 
+   style: 'Pop Rock', 
+   difficulty: 'Intermediate' }, 
+
+  { title: "High Hopes", 
+   artist: 'Panic! at the Disco', 
+   style: 'Pop Rock', 
+   difficulty: 'Intermediate/Master' }, 
+
+  { title: "Death of a Bachelor", 
+   artist: 'Panic! at the Disco', 
+   style: 'Pop Rock', 
+   difficulty: 'Intermediate/Master' },         
+        
+  { title: "Poker Face", 
+   artist: 'Lady Gaga', 
+   style: 'Dance Pop', 
+   difficulty: 'Intermediate' }, 
+
+  { title: "Bad Romance", 
+   artist: 'Lady Gaga', 
+   style: 'Electropop', 
+   difficulty: 'Intermediate/Master' },  
+
+  { title: "Born This Way", 
+   artist: 'Lady Gaga', 
+   style: 'Dance Pop', 
+   difficulty: 'Intermediate' }, 
+
+  { title: "Shallow", 
+   artist: 'Lady Gaga', 
+   style: 'Pop', 
+   difficulty: 'Intermediate/Master' },
+
+  { title: "Just Dance", 
+   artist: 'Lady Gaga', 
+   style: 'Electropop', 
+   difficulty: 'Intermediate' }, 
+
+  { title: "Hound Dog", 
+   artist: 'Elvis Presley', 
+   style: 'Rock', 
+   difficulty: 'Intermediate' }, 
+
+  { title: "Jailhouse Rock", 
+   artist: 'Elvis Presley', 
+   style: 'Rock', 
+   difficulty: 'Intermediate' }, 
+
+  { title: "Can't Help Falling in Love", 
+   artist: 'Elvis Presley', 
+   style: 'Pop Ballad', 
+   difficulty: 'Intermediate' }, 
+
+  { title: "Suspicious Minds", 
+   artist: 'Elvis Presley', 
+   style: 'Rock', 
+   difficulty: 'Intermediate/Master' }, 
+
+  { title: "Blue Suede Shoes", 
+   artist: 'Elvis Presley', 
+   style: 'Rockabilly', 
+   difficulty: 'Intermediate' }, 
+
+  { title: "Work from Home", 
+   artist: 'Fifth Harmony', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' }, 
+
+  { title: "Worth It", 
+   artist: 'Fifth Harmony', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' }, 
+
+   { title: "BO$$", 
+   artist: 'Fifth Harmony', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' }, 
+
+  { title: "All In My Head (Flex)", 
+   artist: 'Fifth Harmony', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' }, 
+
+  { title: "He Like That", 
+   artist: 'Fifth Harmony', 
+   style: 'Pop', 
+   difficulty: 'Intermediate/Master' }, 
+
+  { title: "Black Magic", 
+   artist: 'Little Mix', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' }, 
+
+  { title: "Shout Out to My Ex", 
+   artist: 'Little Mix', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' },
+
+  { title: "Touch", 
+   artist: 'Little Mix', 
+   style: 'Pop', 
+   difficulty: 'Intermediate' },
+
+  { title: "No More Sad Songs", 
+   artist: 'Little Mix', 
+   style: 'Pop', 
+   difficulty: 'Intermediate/Master' },
+
+  { title: "Secret Love Song", 
+   artist: 'Little Mix', 
+   style: 'Pop Ballad', 
+   difficulty: 'Intermediate/Master' },
+];
+
+var searchInput = document.getElementById("search");
+var newarray = [];
+var savedSongs = [];
+
+function showtable(curarray) {
+  document.getElementById("mytable").innerHTML = `
+    <tr class="bg-primary text-white fw-bold">
+      <td>Title</td>
+      <td>Artist</td>
+      <td>Style</td>
+      <td>Difficulty</td>
+      <td>Saved</td>
+      <td>Delete</td>
+    </tr>
+  `;
+
+  if (curarray == "") {
+    document.getElementById("error").innerHTML = `<span class='text-danger '>Not Found!</span>`;
+  } else {
+    document.getElementById("error").innerHTML = "";
+
+    for (var i = 0; i < curarray.length; i++) {
+      var saved = savedSongs.includes(curarray[i].title);
+
+      document.getElementById("mytable").innerHTML += `
+        <tr>
+          <td>${curarray[i].title}</td> 
+          <td>${curarray[i].artist}</td> 
+          <td>${curarray[i].style}</td> 
+          <td>${curarray[i].difficulty}</td>
+          <td><label><input type="checkbox" value="${curarray[i].title}" ${saved ? 'checked' : ''}>Save</label></td>
+          <td><button class="btn btn-danger delete-btn" data-title="${curarray[i].title}">Delete</button></td>
+        </tr>
+      `;
+    }
+  }
+  
+  // Add event listeners to the delete buttons
+  var deleteButtons = document.querySelectorAll('.delete-btn');
+  deleteButtons.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+      var title = event.target.getAttribute('data-title');
+      var index = savedSongs.indexOf(title);
+      if (index > -1) {
+        savedSongs.splice(index, 1);
+      }
+      showtable(newarray);
+    });
+  });
+}
+
+showtable(array);
+
+searchInput.addEventListener("keyup", function () {
+  var search = this.value.toLowerCase();
+
+  newarray = array.filter(function (val) {
+    var title = val.title.toLowerCase();
+    var artist = val.artist.toLowerCase();
+    var style = val.style.toLowerCase();
+    var difficulty = val.difficulty.toLowerCase();
+
+    if (title.includes(search) || artist.includes(search) || style.includes(search) || difficulty.includes(search)) {
+      var newobj = { title: val.title, artist: val.artist, style: val.style, difficulty: val.difficulty };
+      return newobj;
+    }
+  });
+
+  showtable(newarray);
+});
+
+// Add event listener for the save checkboxes
+var saveCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+saveCheckboxes.forEach(function(checkbox) {
+  checkbox.addEventListener('change', function(event) {
+    var title = event.target.value;
+    if (event.target.checked) {
+      savedSongs.push(title);
+    } else {
+      var index = savedSongs.indexOf(title);
+      if (index > -1) {
+        savedSongs.splice(index, 1);
+      }
+    }
+  });
+});
+
+
+
+  
+    </script>
+
+</body>
+
+</html>
