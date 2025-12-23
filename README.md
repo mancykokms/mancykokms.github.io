@@ -44,7 +44,7 @@ Secondary School Diploma
 
 ## 💼 Experience
 
-### **Large Model Product R&D Intern**  
+### **Large Language Model Product R&D Intern**  
 **SenseTime (Beijing SenseTime Technology Development Co. Ltd.)**  
 *July – August 2025*
 
