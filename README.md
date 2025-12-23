@@ -30,6 +30,18 @@ Secondary School Diploma
 
 ---
 
+## 📜 Certifications
+
+- **Prompt Engineering for ChatGPT** — *Vanderbilt University*  
+  Coursera Certificate · Jun 2025  
+  - Learned structured prompting, role-based prompting, and task decomposition  
+  - Applied prompt design principles to improve LLM output quality and consistency  
+  - Hands-on practice with real-world AI use cases (summarization, classification, ideation)
+
+  🔗 [View Certificate](https://www.coursera.org/account/accomplishments/records/6C0CMKOF22EZ)
+
+---
+
 ## 💼 Experience
 
 ### **Large Model Product R&D Intern**  
