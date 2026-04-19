@@ -4,172 +4,582 @@
   <meta charset="UTF-8" />
   <title>Mancy Ko | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --surface2: #1e1e1e;
+      --border: #2a2a2a;
+      --accent: #7c6af7;
+      --accent2: #a78bfa;
+      --text: #e8e8e8;
+      --muted: #888;
+      --tag-bg: #1e1a36;
+      --tag-color: #a78bfa;
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 0 20px;
-      line-height: 1.6;
-      color: #222;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.2em;
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,13,13,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      height: 60px;
     }
-
-    h2 {
-      margin-top: 3rem;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 0.3em;
-    }
-
-    .project {
-      margin: 2rem 0;
-    }
-
-    .project h3 {
-      margin-bottom: 0.2em;
-    }
-
-    .tech {
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    a {
-      color: #0066cc;
+    .nav-brand { font-weight: 700; font-size: 1rem; color: var(--accent2); letter-spacing: 0.02em; }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
       text-decoration: none;
+      font-size: 0.88rem;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+
+    section { padding: 5rem 0; }
+
+    h2.section-title {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    h2.section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      padding: 7rem 0 5rem;
+    }
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 3.5rem;
+    }
+    .hero-photo {
+      flex-shrink: 0;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid var(--border);
+      box-shadow: 0 0 0 6px rgba(167,139,250,0.12);
+    }
+    .hero-text { flex: 1; }
+    .hero-eyebrow {
+      font-size: 0.85rem;
+      color: var(--accent2);
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    #hero h1 {
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    #hero h1 span { color: var(--accent2); }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 2rem;
+    }
+    .hero-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.2rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #6a59e0; }
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); }
+
+    /* ── ABOUT ── */
+    #about p { color: var(--muted); max-width: 620px; font-size: 1rem; }
+
+    /* ── EDUCATION ── */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-school { font-weight: 700; color: var(--text); margin-bottom: 0.2rem; }
+    .edu-degree { color: var(--muted); font-size: 0.92rem; }
+    .edu-year { color: var(--accent2); font-size: 0.82rem; white-space: nowrap; margin-top: 0.2rem; }
+
+    /* ── EXPERIENCE ── */
+    .exp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.6rem;
+      margin-bottom: 1.25rem;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+    }
+    .exp-role { font-weight: 700; color: var(--text); font-size: 1rem; }
+    .exp-company { color: var(--accent2); font-size: 0.88rem; margin-top: 0.15rem; }
+    .exp-date { color: var(--muted); font-size: 0.8rem; white-space: nowrap; }
+    .exp-body { color: var(--muted); font-size: 0.92rem; }
+    .exp-body ul { padding-left: 1.2rem; margin-top: 0.5rem; }
+    .exp-body li { margin-bottom: 0.35rem; }
+    .exp-highlight {
+      background: var(--surface2);
+      border-left: 3px solid var(--accent);
+      padding: 0.7rem 1rem;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.1rem;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s;
+    }
+    .project-card:hover { border-color: var(--accent); }
+    .project-card h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+    .project-meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.75rem; }
+    .project-desc { font-size: 0.9rem; color: var(--muted); flex: 1; margin-bottom: 1rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-color);
+      font-size: 0.75rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
       font-weight: 500;
     }
+    .project-link { font-size: 0.85rem; color: var(--accent2); text-decoration: none; font-weight: 600; }
+    .project-link:hover { text-decoration: underline; }
 
-    a:hover {
-      text-decoration: underline;
+    /* ── ACHIEVEMENTS ── */
+    .achieve-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .achieve-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.3rem 1.4rem;
+    }
+    .achieve-card .issuer { font-size: 0.75rem; color: var(--accent2); font-weight: 600; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+    .achieve-card .title { font-size: 0.92rem; font-weight: 600; color: var(--text); margin-bottom: 0.2rem; }
+    .achieve-card .subtitle { font-size: 0.82rem; color: var(--muted); }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem;
+    }
+    .skill-group h4 { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.75rem; }
+    .skill-group ul { list-style: none; }
+    .skill-group li { font-size: 0.88rem; color: var(--muted); padding: 0.2rem 0; }
+
+    /* ── CONTACT ── */
+    #contact { padding-bottom: 7rem; }
+    .contact-inner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .contact-inner h3 { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
+    .contact-inner p { color: var(--muted); margin-bottom: 1.5rem; }
+    .contact-links { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
     }
 
-    footer {
-      margin-top: 4rem;
-      font-size: 0.9rem;
-      color: #666;
+    @media (max-width: 600px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .achieve-grid { grid-template-columns: 1fr 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { gap: 1rem; }
+      .exp-header { flex-direction: column; }
+      .edu-item { flex-direction: column; gap: 0.2rem; }
+      .hero-inner { flex-direction: column; align-items: flex-start; gap: 2rem; }
+      .hero-photo { width: 130px; height: 130px; }
     }
   </style>
 </head>
-
 <body>
 
-  <h1>Ko Man Sze (Mancy)</h1>
-  <p>
-    Computer Engineering Student @ HKUST <br />
-    AI-leaning • Python • Systems • Algorithms
-  </p>
+<nav>
+  <span class="nav-brand">Mancy Ko</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <p>
-    <a href="https://github.com/mancykokms">GitHub</a> |
-    <a href="mailto:mancykomansze@email.com">Email</a>
-  </p>
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <img class="hero-photo" src="ChatGPT Image Dec 30, 2025, 07_11_04 PM.png" alt="Mancy Ko" />
+      <div class="hero-text">
+        <p class="hero-eyebrow">Computer Engineering · HKUST · Year 2</p>
+        <h1>Ko Man Sze<br/><span>Mancy</span></h1>
+        <p class="hero-sub">
+          Building practical AI tools and exploring systems from the ground up.
+          Interested in LLMs, backend engineering, and clean, purposeful code.
+        </p>
+        <div class="hero-links">
+          <a class="btn btn-primary" href="Resume_Mancy Ko1 (3).pdf" target="_blank">Resume ↗</a>
+          <a class="btn btn-ghost" href="https://github.com/mancykokms" target="_blank">GitHub</a>
+          <a class="btn btn-ghost" href="mailto:mancykomansze@gmail.com">Email</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/man-sze-ko-945782197" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <h2>Projects</h2>
-
-  <div class="project">
-    <h3>AI WordTrim</h3>
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About</h2>
     <p>
-      An AI-powered tool that converts long Chinese definitions into short,
-      keyword-style explanations for fast learning.
-    </p>
-    <p class="tech">
-      Tech: Python, JSON, LLM API
-    </p>
-    <p>
-      <a href="https://github.com/mancykokms/mancykokms.github.io/tree/main/word_trim">
-        View on GitHub →
-      </a>
+      I'm a Year 2 Computer Engineering student at HKUST with an Extended Major in AI.
+      I'm self-motivated, enjoy tackling real-world problems with code, and care a lot
+      about learning things properly — from first principles. Outside of tech, I'm
+      multilingual (Cantonese, English, Mandarin) and have a background in debate and IT.
     </p>
   </div>
+</section>
 
-  <div class="project">
-    <h3>CLI Assistant</h3>
-    <p>
-      A command-line AI assistant that answers queries, summarizes text,
-      and integrates with LLM APIs.
-    </p>
-    <p class="tech">
-      Tech: Python, OpenAI / DeepSeek API
-    </p>
-    <p>
-      <a href="https://github.com/mancykokms/mancykokms.github.io/blob/main/CLI_Assistant.py">
-        View on GitHub →
-      </a>
-      <br>
-      <a href="https://mancykokms.github.io/CLI_Assistant.py">
-        Download →
-      </a>
-    </p>
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <h2 class="section-title">Education</h2>
+
+    <div class="edu-item">
+      <div>
+        <div class="edu-school">Hong Kong University of Science and Technology</div>
+        <div class="edu-degree">BEng Computer Engineering · Extended Major in Artificial Intelligence</div>
+      </div>
+      <div class="edu-year">2024 – Present</div>
+    </div>
+
+    <div class="edu-item">
+      <div>
+        <div class="edu-school">TWGHs Lo Kon Ting Memorial College</div>
+        <div class="edu-degree">Hong Kong Diploma of Secondary Education (HKDSE) · Overall Score: 32</div>
+      </div>
+      <div class="edu-year">2018 – 2024</div>
+    </div>
   </div>
+</section>
 
-  <div class="project">
-    <h3>ChordSnap Quiz</h3>
-    <p>
-      A browser-based, timed quiz that tests guitar chord recognition using
-      standard fretboard notation, with instant feedback and score tracking.
-    </p>
-    <p class="tech">
-      Tech: HTML5, CSS3, Vanilla JavaScript
-    </p>
-    <p>
-      <a href="https://mancykokms.github.io/animated_quiz.%28chords%29.html">
-        View on GitHub →
-      </a>
-    </p>
-</div>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <h2 class="section-title">Experience</h2>
 
-<div class="project">
-  <h3>SongFinder</h3>
-  <p>
-    A web app to search, filter, and manage a curated list of songs by title, artist, style, or difficulty.
-    Features include real-time search, save/delete options, and responsive table display using Bootstrap.
-  </p>
-  <p class="tech">
-    Tech: HTML5, CSS3, JavaScript, Bootstrap 5
-  </p>
-  <p>
-    <a href="https://mancykokms.github.io/sort_and_filter_searchbar.html">
-      View on GitHub →
-    </a>
-  </p>
-</div>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Large Model Product R&amp;D Intern</div>
+          <div class="exp-company">Beijing SenseTime Technology Development Co. Ltd.</div>
+        </div>
+        <div class="exp-date">Jul – Aug 2025</div>
+      </div>
+      <div class="exp-body">
+        <ul>
+          <li>Optimized LLM-generated vocabulary for the <strong>Milo Dictionary</strong> app — validated semantics, streamlined content, and improved age-appropriateness of definitions and example sentences for teenage users.</li>
+          <li>Conducted specialized reviews of polysemous words and complex language entries, ensuring vocabulary reliability aligned with adolescent cognitive preferences.</li>
+          <li>Reviewed AI-generated images for matching degree, clarity, and age-appropriateness to enhance learning outcomes.</li>
+          <li>Verified pronunciation audio accuracy, checking phonetics, intonation, and clarity for effective language learning.</li>
+        </ul>
+        <div class="exp-highlight">
+          Built an internal AI tool using finetuned LLM API calls to automate definition summarization — introduced IPA recommendations to the development team that improved pronunciation audio quality.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="project">
-  <h3>Sortable Songs Table</h3>
-  <p>
-    An interactive web app displaying a list of songs with artist, style, and difficulty.
-    Users can sort any column in ascending or descending order using clicks or keyboard navigation.
-    Built for accessibility and responsive display using Bootstrap and jQuery.
-  </p>
-  <p class="tech">
-    Tech: HTML5, CSS3, JavaScript, jQuery, Bootstrap 5
-  </p>
-  <p>
-    <a href="https://mancykokms.github.io/sort_table.html">
-      View on GitHub →
-    </a>
-  </p>
-</div>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
 
+      <div class="project-card">
+        <h3>AI WordTrim</h3>
+        <p class="project-meta">July 2025 · SenseTime Internship</p>
+        <p class="project-desc">
+          An AI-powered tool that converts long Chinese dictionary definitions into short,
+          keyword-style explanations optimised for fast learning.
+        </p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">JSON</span>
+          <span class="tag">LLM API</span>
+        </div>
+        <a class="project-link" href="https://github.com/mancykokms/mancykokms.github.io/tree/main/word_trim" target="_blank">View on GitHub →</a>
+      </div>
 
+      <div class="project-card">
+        <h3>CLI Assistant</h3>
+        <p class="project-meta">July 2025</p>
+        <p class="project-desc">
+          A command-line AI assistant that answers queries, summarizes text,
+          and integrates with LLM APIs for versatile scripting workflows.
+        </p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">OpenAI API</span>
+          <span class="tag">DeepSeek API</span>
+        </div>
+        <a class="project-link" href="https://github.com/mancykokms/mancykokms.github.io/blob/main/CLI_Assistant.py" target="_blank">View on GitHub →</a>
+      </div>
 
+      <div class="project-card">
+        <h3>ChordSnap Quiz</h3>
+        <p class="project-meta">June 2023 · DSE SBA Project</p>
+        <p class="project-desc">
+          A browser-based timed quiz that tests guitar chord recognition using
+          standard fretboard notation, with instant feedback and score tracking.
+        </p>
+        <div class="tags">
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">JavaScript</span>
+        </div>
+        <a class="project-link" href="https://mancykokms.github.io/animated_quiz.%28chords%29.html" target="_blank">Live Demo →</a>
+      </div>
 
-  <h2>About</h2>
-  <p>
-    I’m a computer engineering student focused on building practical AI tools
-    and understanding systems from the ground up. I care about clean code,
-    real-world usefulness, and learning things properly.
-  </p>
+      <div class="project-card">
+        <h3>SongFinder</h3>
+        <p class="project-meta">June 2023 · DSE SBA Project</p>
+        <p class="project-desc">
+          A web app to search, filter, and manage a curated song list by title, artist,
+          style, or difficulty — with real-time search and a responsive Bootstrap table.
+        </p>
+        <div class="tags">
+          <span class="tag">HTML5</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Bootstrap 5</span>
+        </div>
+        <a class="project-link" href="https://mancykokms.github.io/sort_and_filter_searchbar.html" target="_blank">Live Demo →</a>
+      </div>
 
-  <footer>
-    © 2025 Mancy • Built with plain HTML & CSS
-  </footer>
+      <div class="project-card">
+        <h3>Sortable Songs Table</h3>
+        <p class="project-meta">June 2023 · DSE SBA Project</p>
+        <p class="project-desc">
+          An accessible, interactive song table with click-and-keyboard column sorting
+          in ascending or descending order. Built with Bootstrap and jQuery.
+        </p>
+        <div class="tags">
+          <span class="tag">HTML5</span>
+          <span class="tag">jQuery</span>
+          <span class="tag">Bootstrap 5</span>
+        </div>
+        <a class="project-link" href="https://mancykokms.github.io/sort_table.html" target="_blank">Live Demo →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="container">
+    <h2 class="section-title">Achievements &amp; Certifications</h2>
+    <div class="achieve-grid">
+
+      <div class="achieve-card">
+        <div class="issuer">Vanderbilt University · Coursera</div>
+        <div class="title">Prompt Engineering for ChatGPT</div>
+        <div class="subtitle">Jun 2025</div>
+      </div>
+
+      <div class="achieve-card">
+        <div class="issuer">IBM · Coursera</div>
+        <div class="title">Python for Data Science, AI &amp; Development</div>
+        <div class="subtitle">Jun 2025</div>
+      </div>
+
+      <div class="achieve-card">
+        <div class="issuer">TWGHs LKTMC · 2019 – 2024</div>
+        <div class="title">Best-All-Round Student Award</div>
+        <div class="subtitle">Six consecutive years</div>
+      </div>
+
+      <div class="achieve-card">
+        <div class="issuer">HKCERT / HKPC · 2022</div>
+        <div class="title">HK Cyber Security CTF Challenge</div>
+        <div class="subtitle">Secondary School Participation Award</div>
+      </div>
+
+      <div class="achieve-card">
+        <div class="issuer">TWGHs LKTMC</div>
+        <div class="title">Emcee — School Ceremonies</div>
+        <div class="subtitle">English Debate Team &amp; IT Team member</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+
+      <div class="skill-group">
+        <h4>Languages</h4>
+        <ul>
+          <li>Python</li>
+          <li>C++</li>
+          <li>MIPS Assembly</li>
+          <li>JavaScript</li>
+          <li>HTML / CSS</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h4>AI / ML</h4>
+        <ul>
+          <li>LLM API Integration</li>
+          <li>Prompt Engineering</li>
+          <li>OpenAI / DeepSeek SDK</li>
+          <li>Data Science (Python)</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h4>Tools</h4>
+        <ul>
+          <li>Git / GitHub</li>
+          <li>VS Code</li>
+          <li>Google Workspace</li>
+          <li>Microsoft Office</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h4>Languages (Spoken)</h4>
+        <ul>
+          <li>Cantonese (native)</li>
+          <li>English (fluent)</li>
+          <li>Mandarin (fluent)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-inner">
+      <h3>Let's connect</h3>
+      <p>Open to internships, collaborations, and interesting projects.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:mancykomansze@gmail.com">mancykomansze@gmail.com</a>
+        <a class="btn btn-ghost" href="https://github.com/mancykokms" target="_blank">GitHub</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/man-sze-ko-945782197" target="_blank">LinkedIn</a>
+        <a class="btn btn-ghost" href="Resume_Mancy Ko1 (3).pdf" target="_blank">Resume PDF</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Ko Man Sze (Mancy) · Built with plain HTML &amp; CSS
+</footer>
 
 </body>
 </html>
