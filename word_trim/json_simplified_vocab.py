@@ -4,7 +4,7 @@ import time
 import os
 import sys
 
-API_KEY = "sk-459e319768154a98b65306dad2052efc"
+API_KEY = "your-api-key"
 
 API_URL = "https://api.deepseek.com/chat/completions"  # 请替换为正确 endpoint
 MODEL_NAME = "deepseek-chat"  # 也可能是 deepseek-chat-v2 等
