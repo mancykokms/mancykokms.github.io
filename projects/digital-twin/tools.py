@@ -70,7 +70,7 @@ def record_unknown_question(question):
         "owner_email": OWNER_EMAIL,
         "visitor_email": OWNER_EMAIL,
         "subject": subject,
-        "body": body
+        "body": question
     })
     return "OK"
 
