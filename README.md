@@ -18,8 +18,8 @@ I’m a self-motivated computer engineering student with a strong interest in **
 
 ### **Hong Kong University of Science and Technology (HKUST)**  
 **BEng in Computer Engineering**  
-Extended Major in Artificial Intelligence  
-*2024 – Present (Year 2)*
+Extended Major in Artificial Intelligence · Minor in Big Data Technology  
+*2024 – Present (Year 3)*
 
 ---
 
@@ -44,6 +44,17 @@ Secondary School Diploma
 
 ## 💼 Experience
 
+### **AI Digital Marketing Assistant Intern**  
+**Tech Vision System Ltd.** (San Po Kong, Hong Kong)  
+*June – August 2026*
+
+#### 🔧 What I Did
+- Designed and built an end-to-end, multi-user **HR attendance platform** (Python, Streamlit, SQLite) integrating WeCom, Azure AD/Outlook, Google Maps Geocoding, and JDC APIs to auto-classify attendance and generate compliance reports — reported directly to the Head of HR and CEO, and took full ownership after initial co-development.
+- Drove a live **sales analytics dashboard** (Streamlit, Pipedrive REST API) from v13 to v15.4.0, building the core data-fetching/summarization engine, role-based authentication, and inline write-back editing now used daily by the Sales, Sales Admin, and JDC teams.
+- Directed a ground-up rewrite of a legacy 1,600-line Selenium automation script into a modular, API-integrated contract-sync tool connecting JDC and Pipedrive, diagnosing integration failures against live production APIs.
+
+---
+
 ### **Large Language Model Product R&D Intern**  
 **SenseTime (Beijing SenseTime Technology Development Co. Ltd.)**  
 *July – August 2025*
@@ -66,6 +77,32 @@ Secondary School Diploma
 
 ---
 
+## 🧩 Projects
+
+### **Debate AI — Multi-Agent Debate Practice Tool**
+*Aug 2026 – Present · Python, Streamlit, CrewAI, LangGraph, Pydantic AI, SenseTime Nova API*
+- Building an AI debate-practice tool with multiple practice modes, each built on a different agent framework (CrewAI for role-based task delegation, LangGraph for stateful multi-agent workflows, Pydantic AI for type-safe, schema-validated outputs) to compare orchestration approaches.
+- Cut full-debate-simulation runtime from 6 minutes to 3.5 minutes by refactoring from blocking generation to streaming each agent's speech as it completes.
+- 🔗 [GitHub](https://github.com/mancykokms/rag_debater_demo)
+
+### **Digital Twin — AI Resume Assistant**
+*Jul 2026 · Python, Gradio, DeepSeek API, EmailJS*
+- Built and deployed a conversational LLM agent (DeepSeek API) on Hugging Face Spaces that answers visitor questions about my background in real time.
+- Engineered a dual-notification pipeline via EmailJS so both visitor and owner are notified per conversation.
+- 🔗 [Live Demo](https://huggingface.co/spaces/mancykokms/digital_twin) · [GitHub](https://github.com/mancykokms/mancykokms.github.io/tree/main/projects/digital-twin)
+
+### **AI WordTrim**
+*Jul 2025 · SenseTime Internship · Python, JSON, LLM API*
+- An AI-powered tool that converts long Chinese dictionary definitions into short, keyword-style explanations optimised for fast learning.
+- 🔗 [GitHub](https://github.com/mancykokms/mancykokms.github.io/tree/main/projects/word-trim)
+
+### **CLI Assistant**
+*Jul 2025 · Python, OpenAI API, DeepSeek API*
+- A command-line AI assistant that answers queries, summarizes text, and integrates with LLM APIs for versatile scripting workflows.
+- 🔗 [GitHub](https://github.com/mancykokms/mancykokms.github.io/tree/main/projects/cli-assistant)
+
+---
+
 ## 🏅 Achievements & Activities
 
 ### **Tung Wah Group of Hospitals Lo Kon Ting Memorial College**
@@ -85,10 +122,11 @@ Secondary School Diploma
 
 ## 🛠 Technical Skills
 
-### Programming & Tools
-- **Languages:** Python, C++, JavaScript, HTML, CSS, MIPS Assembly
-- **Platforms:** Windows 10 & 11
-- **Productivity:** Microsoft Office (Word, Excel, Access, PowerPoint), Google Workspace
+- **Languages:** Python, C++, JavaScript, MIPS Assembly, HTML/CSS, LaTeX
+- **AI/ML:** LLM API Integration (OpenAI, DeepSeek, SenseTime Nova), Multi-Agent Orchestration (CrewAI, LangGraph, Pydantic AI), Prompt Engineering, Agentic Workflows
+- **Backend & Data:** REST API Integration, SQLite, Pandas, PyInstaller (packaging & distribution)
+- **Libraries:** NumPy, Matplotlib, PyTorch, OpenCV, Streamlit, Gradio
+- **Tools:** Git, VS Code, IntelliJ IDEA, Jupyter Notebook, Figma, Notion
 
 ---
 
