@@ -83,7 +83,7 @@ Secondary School Diploma
 *Aug 2026 – Present · Python, Streamlit, CrewAI, LangGraph, Pydantic AI, SenseTime Nova API*
 - Building an AI debate-practice tool with multiple practice modes, each built on a different agent framework (CrewAI for role-based task delegation, LangGraph for stateful multi-agent workflows, Pydantic AI for type-safe, schema-validated outputs) to compare orchestration approaches.
 - Cut full-debate-simulation runtime from 6 minutes to 3.5 minutes by refactoring from blocking generation to streaming each agent's speech as it completes.
-- 🔗 [GitHub](https://github.com/mancykokms/rag_debater_demo)
+- 🔗 [Live Demo](https://ragdebaterdemo-fkcasrnhbifgia5ffvh4e5.streamlit.app/) · [GitHub](https://github.com/mancykokms/rag_debater_demo)
 
 ### **Digital Twin — AI Resume Assistant**
 *Jul 2026 · Python, Gradio, DeepSeek API, EmailJS*
