@@ -32,6 +32,9 @@ Secondary School Diploma
 
 ## 📜 Certifications
 
+- **AI Engineer Agentic Track: The Complete Agent & MCP Course** — *Udemy*  
+  Certificate · Aug 2026
+
 - **Prompt Engineering for ChatGPT** — *Vanderbilt University*  
   Coursera Certificate · Jun 2025  
   - Learned structured prompting, role-based prompting, and task decomposition  
